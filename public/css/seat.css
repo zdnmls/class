@@ -1,0 +1,22 @@
+ .seat .seat-block {
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    margin: 2px;
+    float: left;
+    border: 1px solid #5facff;
+    transition: all .1s ease;
+    cursor: pointer;
+    border-radius:3px;
+  } 
+
+  .seat .seat-block:hover {
+    transform:scale(1.1,1.1)
+  }
+  
+  .seat .seat-block.active {
+    background: #33abff;
+  }
+   */

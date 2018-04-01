@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>班级列表</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<style type="text/css">
+    body {
+        background-image: url(../img/as.jpg);
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+    }
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container">
+            <span class="text-white" style="cursor:pointer" href="/"> 班级管理系统</span>
+            <a class="text-white" href="/login">退出</a>
+        </div>
+
+    </nav>
+    <div class="container">
+        <hr>
+        <ul class="list-group">
+            <% classes.forEach(function(v){ %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="/class_detail?id=<%=v.id%>">
+                        <%=v.class%>
+                    </a>
+                    <span class="badge badge-primary badge-pill">26</span>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+</body>
+</html>

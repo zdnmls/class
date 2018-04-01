@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>录入信息</title>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/seat.js"></script>
+    <script src="/js/city_list.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/seat.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container">
+            <a class="text-white" href="/"> 返回首页</a>
+        </div>
+    </nav>
+    <h4 style="text-align:center;padding:20px">学生信息录入：</h4>
+    <div class="container">
+        <hr>
+        <form action="/add_student" method="get">
+            <div class="form-group">
+                <label for="name">姓名</label>
+                <input type="text" name="name" autocomplete="off" class="form-control form-control-sm" id="name" aria-describedby="emailHelp"
+                    placeholder="Enter name">
+                <small id="emailHelp" class="form-text text-muted">请按正确格式写</small>
+            </div>
+            <div class="form-group">
+                <label for="sex">性别</label>
+                <select id="sex" name="sex" class="form-control form-control-sm">
+                    <option selected>Choose...</option>
+                    <option value="1">男</option>
+                    <option value="2">女</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="city">家乡</label>
+                <div class="dis" style="display: flex">
+                    <select id="first" class="form-control form-control-sm">
+                        <option value="-1">选择省...</option>
+                        <% city.forEach(function(v){ %>
+                            <option value="<%= v.RegionCode %>">
+                                <%= v.RegionName %>
+                            </option>
+                            <% }); %>
+                    </select>
+                    <select id="second" class="form-control form-control-sm">
+                        <option value="-1">选择市...</option>
+                    </select>
+                    <select id="third" name="hometown" class="form-control form-control-sm">
+                        <option value="-1">选择县...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <!-- <div class="col-sm"> -->
+                <label for="city">意向城市</label>
+                <select id="expect_city" name="expect_city" class="form-control form-control-sm">
+                    <option value="-1">意向城市...</option>
+                    <% city.forEach(function(v){ %>
+                        <option value="<%= v.RegionName %>">
+                            <%= v.RegionName %>
+                        </option>
+                        <% }); %>
+                </select>
+                <!-- </div> -->
+            </div>
+            <div class="form-group">
+                <label for="classe">班级</label>
+                <select id="classe" name="classe" class="form-control form-control-sm">
+                    <option selected>Choose...</option>
+                    <% classes.forEach(function(v){ %>
+                        <option value="<%= v.id %>">
+                            <%= v.class %>
+                        </option>
+                        <% }); %>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-sm">
+                    <h6 class="card-subtitle mb-2 text-muted text-center">座位表</h6>
+                    <input type="hidden" name="seat" id="seat" value="">
+                    <div class="card-text" style="width:100%;height:200px;">
+                        <div class="seat" style="height:200px;">
+                            <div class="left" style="width:48%;height:100%;float:left;"></div>
+                            <div class="right" style="width:48%;height:100%;float:right;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">提交</button>
+        </form>
+    </div>
+</body>
+
+</html>
